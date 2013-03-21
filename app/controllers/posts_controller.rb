@@ -1,12 +1,38 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
-  def index
+def get_list
+   Rails.logger.debug "get list------"
+   (1..10000).each do |l|
+    Rails.logger.debug l
+   end
+end
+def test_ajax
+ sleep 40
+ Rails.logger.debug "Test ajax" 
 
-    sleep 40
+    puts "Posts served........"
+    @posts = Post.all
+    (1..100).each do |i|
+     Rails.logger.debug i
+    end
+respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
+    get_list
+
+
+end
+  def index
+    
     puts "Posts served........"  
     @posts = Post.all
-
+    (1..100).each do |i|
+     Rails.logger.debug i
+    end
+    get_list
+       
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

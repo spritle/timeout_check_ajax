@@ -21,9 +21,9 @@ $(document).ready(function(){
 	$("#test_ajax").on("click",function(){
 		$("#page-loading").show();
 
-		var page_url = "/posts.json"
+		var page_url = "/posts/test_ajax"
 		$.ajax({
-			type: "GET",
+			type: "POST",
 			beforeSend: function(xhr){ xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 			dataType: "json",
 			url: page_url,
